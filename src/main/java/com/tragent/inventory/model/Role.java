@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public enum Role {
+	
 	SALES_AGENT(1, "Sales agent", "Sales agent at the sales point"),
 	ADMIN(1, "Admin", "A Manager or person at higher post able to carry out all possible actions");
 	
@@ -44,4 +45,6 @@ public enum Role {
 	public String getDescription() {
 		return description;
 	}
+	
+	
 }
