@@ -60,4 +60,5 @@ public interface UserService {
 	 * @param id id of the user to be deleted
 	 */
 	void delete(Long id);
+	
 }
