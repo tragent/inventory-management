@@ -1,8 +1,10 @@
 package com.tragent.inventory.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
@@ -11,11 +13,23 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	
+	@Column(nullable=false)
 	private String firstName;
+	
+	@Column(nullable=false)
 	private String lastName;
+	
+	@Column(nullable=false)
 	private String username;
+	
+	@Column(nullable=false)
 	private String password;
+	
+	@Column(nullable=false)
 	private String email;
+	
+	@ManyToOne(optional = false)
+	private Role role;
 		
 	public User(){
 			
@@ -68,5 +82,14 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
 		
 }
