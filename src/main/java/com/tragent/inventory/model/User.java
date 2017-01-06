@@ -4,9 +4,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.omg.CORBA.ServerRequest;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@Table(name = "user")
 public class User {
 		
 	@Id
@@ -28,8 +36,11 @@ public class User {
 	@Column(nullable=false)
 	private String email;
 	
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ServerRequest.class)
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "role_id")
 	private Role role;
+	
 		
 	public User(){
 			
@@ -91,5 +102,4 @@ public class User {
 		this.role = role;
 	}
 	
-		
 }
