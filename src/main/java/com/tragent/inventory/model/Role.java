@@ -18,15 +18,8 @@ import org.springframework.security.core.GrantedAuthority;
 
 @SuppressWarnings("serial")
 @Entity
-<<<<<<< HEAD
-public enum Role {
-	
-	SALES_AGENT(1, "Sales agent", "Sales agent at the sales point"),
-	ADMIN(1, "Admin", "A Manager or person at higher post able to carry out all possible actions");
-=======
 @Table(name = "role")
 public class Role implements GrantedAuthority {
->>>>>>> 144784aedeaf1e74407117e3b97b45f75a480766
 	
 	@Id
 	@GeneratedValue
@@ -64,10 +57,6 @@ public class Role implements GrantedAuthority {
 	public String getDescription() {
 		return description;
 	}
-<<<<<<< HEAD
-	
-	
-=======
 
 	public List<User> getUsers() {
 		return users;
@@ -89,6 +78,5 @@ public class Role implements GrantedAuthority {
 	public String getAuthority() {
 		return id.toString();
 	}
-		
->>>>>>> 144784aedeaf1e74407117e3b97b45f75a480766
+
 }
