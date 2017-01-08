@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Collection<User> findAll() {
 		
-		Collection<User> users = userRepository.findAll();
+		Collection<User> users = userRepository.findByAccountEnabled(true);
 		return users;
 		
 	}
@@ -75,7 +75,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void delete(Long id) {
-		userRepository.delete(id);
+		User user = findById(id);
+		if (id == null) {
+			return;
+		}
+		
+		user.setAccountEnabled(false);
+		userRepository.save(user);
 	}
 	
 }

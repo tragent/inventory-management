@@ -26,6 +26,9 @@ public class Supplier {
 	@Column(nullable=false)
 	private String phoneNumber;
 	
+	@Column(nullable=false)
+	private boolean accountEnabled;
+	
 	public Supplier() {
 		super();
 	}
@@ -69,5 +72,13 @@ public class Supplier {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
+
+	public boolean isAccountEnabled() {
+		return accountEnabled;
+	}
+
+	public void setAccountEnabled(boolean accountEnabled) {
+		this.accountEnabled = accountEnabled;
+	}
+		
 }

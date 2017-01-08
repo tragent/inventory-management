@@ -36,6 +36,9 @@ public class User {
 	@Column(nullable=false)
 	private String email;
 	
+	@Column(nullable=false)
+	private boolean accountEnabled;
+	
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ServerRequest.class)
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "role_id")
@@ -100,5 +103,13 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
+
+	public boolean isAccountEnabled() {
+		return accountEnabled;
+	}
+
+	public void setAccountEnabled(boolean accountEnabled) {
+		this.accountEnabled = accountEnabled;
+	}
+		
 }
