@@ -1,5 +1,6 @@
 package com.tragent.inventory.controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +25,28 @@ public class UserController {
 	private UserService userService;
 	
 	/**
-	 * Get all uses.
+	 * Get all uses or users with a particular username or email.
 	 * 
-	 * @return all users in the system
+	 * @param username/email
+	 * @return all users or users with a particular username or email in the system
 	 */
 	@RequestMapping(method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<User>> getUsers(){
+	public ResponseEntity<Collection<User>> getUsers(@RequestParam(value = "username", required = false) String username, @RequestParam(value = "email", required = false) String email){
 		
-		Collection<User> users = userService.findAll();
-		
+		Collection<User> users = new ArrayList<User>();
+		if (username != null) {
+			User user = userService.findByUsername(username);
+			users.add(user);
+		} else if (email != null) {
+			User user = userService.findByEmail(email);
+			users.add(user);
+		} else {
+			Collection<User> allUser = userService.findAll();
+			users.addAll(allUser);
+		}
 		return new ResponseEntity<Collection<User>>(users, HttpStatus.OK);
+		
 	}
 	
 	/**
@@ -49,33 +61,11 @@ public class UserController {
 	public ResponseEntity<User> getUserById(@PathVariable("id") Long id){
 		
 		User user = userService.findById(id);
-		if(user == null){
+		if (user == null) {
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 		
 		return new ResponseEntity<User>(user, HttpStatus.OK);
-	}
-	
-	/**
-	 * Get user with given username or email.
-	 * 
-	 * @param username, email  username or email of the user to return
-	 * @return the user with given username or email
-	 */
-	@RequestMapping(params = {"username","email"},
-			method=RequestMethod.GET, 
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> getUserByUsername(@RequestParam(value = "username", required = false) String username, @RequestParam(value = "email", required = false) String email){
-		
-		if(username != null){
-			User user = userService.findByUsername(username);
-			
-			return new ResponseEntity<User>(user, HttpStatus.OK);
-		}
-		User user = userService.findByEmail(email);
-		
-		return new ResponseEntity<User>(user, HttpStatus.OK);
-		
 	}
 	
 	/**
@@ -90,10 +80,10 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody User user){
 		
 		user = userService.create(user);
-		
-		if(user == null){
+		if (user == null) {
 			return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
 		}
+		
 		return new ResponseEntity<User>(user, HttpStatus.CREATED);
 		
 	}
@@ -111,8 +101,7 @@ public class UserController {
 	public ResponseEntity<User> updateUser(@RequestBody User user){
 		
 		user = userService.update(user);
-		
-		if(user == null){
+		if (user == null) {
 			return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
 		}
 		return new ResponseEntity<User>(user, HttpStatus.OK);
@@ -130,7 +119,6 @@ public class UserController {
 	public ResponseEntity<User> deleteUser(@PathVariable("id") Long id){
 		
 		userService.delete(id);
-		
 		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 		
 	}

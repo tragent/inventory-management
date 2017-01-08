@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.tragent.inventory.model.User;
 
-
 /**
  * Repository used by UserService to access database.
  */

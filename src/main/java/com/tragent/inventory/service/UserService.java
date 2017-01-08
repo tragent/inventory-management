@@ -31,7 +31,7 @@ public interface UserService {
 	User findByUsername(String username);
 	
 	/**
-	 * Find a user by Id.
+	 * Find a user by email.
 	 * 
 	 * @param id the id of the user to get
 	 * @return the user object if found else return null
