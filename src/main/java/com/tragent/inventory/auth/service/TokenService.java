@@ -10,8 +10,6 @@ import java.util.UUID;
 public class TokenService {
 
     private static final Cache restApiAuthTokenCache = CacheManager.getInstance().getCache("restApiAuthTokenCache");
-    public static final int HALF_AN_HOUR_IN_MILLISECONDS = 30 * 60 * 1000;
-
 
     public void evictExpiredTokens() {
         restApiAuthTokenCache.evictExpiredElements();

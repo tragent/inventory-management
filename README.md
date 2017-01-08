@@ -5,6 +5,13 @@ Generic Inventory Management for small and medium size businesses
 
 Lets do development on the develop branch and only merge with master when changes are stableand ready for release.
 
+## Database configuration
+* spring.datasource.url=jdbc:mysql://localhost:3306/{databasename}
+* spring.datasource.username={database username}
+* spring.datasource.password={database password}
+* spring.datasource.data-username={database username}
+* spring.datasource.data-password={database password}
+
 #### Main developers: **`Team SmartFinance`**
 
 ## What works:

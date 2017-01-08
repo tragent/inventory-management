@@ -30,9 +30,9 @@ public class AuthenticationFilter extends GenericFilterBean {
     public static final String AUTHENTICATE_URL = "/api/v1/authenticate";
     
 	 
-	 public AuthenticationFilter(AuthenticationManager authenticationManager) {
+    public AuthenticationFilter(AuthenticationManager authenticationManager) {
 		 this.authenticationManager = authenticationManager;
-	 }
+	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -43,12 +43,12 @@ public class AuthenticationFilter extends GenericFilterBean {
         
         String username = httpRequest.getParameter("username");
         String password = httpRequest.getParameter("password");
-        String token = httpRequest.getHeader("X-Auth-Token");
-        
+        String token = httpRequest.getHeader("Authorization");   
         
         String resourcePath = new UrlPathHelper().getPathWithinApplication(httpRequest);
         
         try {
+        	
             if (postToAuthenticate(httpRequest, resourcePath)) {
                 processUsernamePasswordAuthentication(httpResponse, username, password);
                 return;
@@ -56,8 +56,7 @@ public class AuthenticationFilter extends GenericFilterBean {
             
             else if (!(token == null) && !token.isEmpty()) {
                 processTokenAuthentication(token);
-            }
-            
+            } 
             chain.doFilter(request, response);
         } catch (InternalAuthenticationServiceException internalAuthenticationServiceException) {
             SecurityContextHolder.clearContext();
@@ -76,12 +75,14 @@ public class AuthenticationFilter extends GenericFilterBean {
 		
 		Authentication resultOfAuthentication = tryToAuthenticateWithToken(token);
         SecurityContextHolder.getContext().setAuthentication(resultOfAuthentication);
+        
 	}
 
 	private Authentication tryToAuthenticateWithToken(String token) {
 		
 		PreAuthenticatedAuthenticationToken requestAuthentication = new PreAuthenticatedAuthenticationToken(token, null);
         return tryToAuthenticate(requestAuthentication);
+        
 	}
 
 	private void processUsernamePasswordAuthentication(HttpServletResponse httpResponse, String username,

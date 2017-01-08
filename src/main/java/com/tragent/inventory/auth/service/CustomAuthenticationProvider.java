@@ -24,14 +24,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		String username = authentication.getName();
 		String password = (String) authentication.getCredentials();
 		
-		
 		User user = userservice.findByUsername(username);
 		
-		if(user == null){
+		if (user == null) {
 			throw new BadCredentialsException("Username not found."+username);
 		}
 		
-		if(!password.equals(user.getPassword())){
+		if ( !password.equals(user.getPassword()) ) {
 			throw new BadCredentialsException("Wrong password.");
 		}
 		

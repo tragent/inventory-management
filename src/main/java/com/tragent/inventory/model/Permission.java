@@ -28,7 +28,7 @@ public class Permission implements GrantedAuthority {
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "permission")
 	private List<Role> role;
 	
-	Permission(){
+	public Permission(){
 		
 	}
 	
