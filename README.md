@@ -53,3 +53,4 @@ Lets do development on the develop branch and only merge with master when change
 ## IMPROVEMENTS:
 
 * Unit tests
+* Optimization techniques
