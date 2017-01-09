@@ -3,10 +3,10 @@ Generic Inventory Management for small and medium size businesses
 
 # Dev Recommendation
 
-Lets do development on the develop branch and only merge with master when changes are stableand ready for release.
+Lets do development on the develop branch and only merge with master when changes are stable and ready for release.
 
 
-## Database configuration
+## Database configuration (file: application.properties)
 * spring.datasource.url=jdbc:mysql://localhost:3306/{databasename}
 * spring.datasource.username={database username}
 * spring.datasource.password={database password}
@@ -23,6 +23,11 @@ Lets do development on the develop branch and only merge with master when change
 * Retrieve a users's details
 * Update user's information
 * Delete a user
+* Create supplier
+* Retrieve a list of suppliers in the system
+* Retrieve a suppliers's details
+* Update supplier's information
+* Delete a supplier
 
 ## What doesn't:
 
@@ -31,15 +36,9 @@ Lets do development on the develop branch and only merge with master when change
 * Retrieve a customers's details
 * Update customer's information
 * Delete a customer
-* Create supplier
-* Retrieve a list of suppliers in the system
-* Retrieve a suppliers's details
-* Update supplier's information
-* Delete a supplier
 * Make purchase from a supplier
 * View sales receipts
 * Make sales to a customer
-* Make purchase from a supplier
 * Create role
 * Retrieve a list of roles in the system
 * Retrieve a roles's details
