@@ -23,14 +23,14 @@ Lets do development on the develop branch and only merge with master when change
 * Retrieve a users's details
 * Update user's information
 * Delete a user
-
-## What doesn't:
-
 * Create customer
 * Retrieve a list of customers in the system
 * Retrieve a customers's details
 * Update customer's information
 * Delete a customer
+
+## What doesn't:
+
 * Create supplier
 * Retrieve a list of suppliers in the system
 * Retrieve a suppliers's details
