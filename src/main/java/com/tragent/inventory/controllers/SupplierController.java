@@ -89,7 +89,7 @@ public class SupplierController {
 	 * update supplier's information
 	 * 
 	 * @param id, id of the supplier
-	 * @return the updated supplier information.
+	 * @return the updated supplier's information.
 	 */
 	@RequestMapping(value="/{id}",
 			method=RequestMethod.PUT,

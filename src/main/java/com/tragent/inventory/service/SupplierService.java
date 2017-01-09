@@ -12,7 +12,7 @@ public interface SupplierService {
 	 * 
 	 * @return collection of all Suppliers in the system
 	 */
-	Collection<Supplier> findAll();
+	public Collection<Supplier> findAll();
 	
 	/**
 	 * Find a supplier by Id.
@@ -20,7 +20,7 @@ public interface SupplierService {
 	 * @param id the id of the required supplier
 	 * @return the supplier object if found else return null
 	 */
-	Supplier findById(Long id);
+	public Supplier findById(Long id);
 		
 	/**
 	 * Find a supplier by email.
@@ -28,29 +28,29 @@ public interface SupplierService {
 	 * @param email the email of the supplier to be gotten
 	 * @return the Supplier object if found else return null
 	 */
-	Supplier findByEmail(String email);
+	public Supplier findByEmail(String email);
 	
 	/**
 	 * Create new supplier.
 	 * 
-	 * @param user the Supplier to be created
+	 * @param supplier the Supplier to be created
 	 * @return the supplier created
 	 */
-	Supplier create(Supplier supplier);
+	public Supplier create(Supplier supplier);
 	
 	/**
 	 * Update an existing supplier's information.
 	 * 
-	 * @param Supplier the Updated user record
+	 * @param Supplier the updated supplier record
 	 * @return the updated supplier object
 	 */
-	Supplier update(Supplier supplier);
+	public Supplier update(Supplier supplier);
 	
 	/**
 	 * Delete a supplier from the system.
 	 * 
 	 * @param id id of the supplier to be deleted
 	 */
-	void delete(Long id);
+	public void delete(Long id);
 	
 }
