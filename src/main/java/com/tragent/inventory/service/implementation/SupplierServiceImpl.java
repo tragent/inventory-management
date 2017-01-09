@@ -43,6 +43,7 @@ public class SupplierServiceImpl implements SupplierService{
 	public Supplier create(Supplier supplier) {
 		
 		if (supplier.getEmail() == null || findByEmail(supplier.getEmail()) != null) {
+			//cannot create supplier without an email
 			return null;
 		}
 		
