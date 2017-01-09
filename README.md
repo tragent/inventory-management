@@ -22,14 +22,14 @@ Generic Inventory Management for small and medium size businesses
 * Retrieve a suppliers's details
 * Update supplier's information
 * Delete a supplier
-
-## What doesn't:
-
 * Create customer
 * Retrieve a list of customers in the system
 * Retrieve a customers's details
 * Update customer's information
 * Delete a customer
+
+## What doesn't:
+
 * Make purchase from a supplier
 * View sales receipts
 * Make sales to a customer
