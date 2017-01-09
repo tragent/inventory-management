@@ -17,8 +17,6 @@ Generic Inventory Management for small and medium size businesses
 * Retrieve a users's details
 * Update user's information
 * Delete a user
-<<<<<<< HEAD
-=======
 * Create supplier
 * Retrieve a list of suppliers in the system
 * Retrieve a suppliers's details
