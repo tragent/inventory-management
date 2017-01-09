@@ -11,8 +11,8 @@ public class TokenService {
 
     private static final Cache restApiAuthTokenCache = CacheManager.getInstance().getCache("restApiAuthTokenCache");
 
-    public void evictExpiredTokens() {
-        restApiAuthTokenCache.evictExpiredElements();
+    public void evictTokens() {
+        restApiAuthTokenCache.removeAll();
     }
 
     public String generateNewToken() {
