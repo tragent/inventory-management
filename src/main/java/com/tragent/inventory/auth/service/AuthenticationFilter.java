@@ -28,7 +28,6 @@ public class AuthenticationFilter extends GenericFilterBean {
     public static final String USER_SESSION_KEY = "user";
     private AuthenticationManager authenticationManager;
     public static final String AUTHENTICATE_URL = "/api/v1/authenticate";
-    
 	 
     public AuthenticationFilter(AuthenticationManager authenticationManager) {
 		 this.authenticationManager = authenticationManager;
@@ -51,7 +50,6 @@ public class AuthenticationFilter extends GenericFilterBean {
         	
             if (postToAuthenticate(httpRequest, resourcePath)) {
                 processUsernamePasswordAuthentication(httpResponse, username, password);
-                return;
             }
             
             else if (!(token == null) && !token.isEmpty()) {
@@ -94,7 +92,7 @@ public class AuthenticationFilter extends GenericFilterBean {
         TokenResponse tokenResponse = new TokenResponse(resultOfAuthentication.getDetails().toString());
         String tokenJsonResponse = new ObjectMapper().writeValueAsString(tokenResponse);
         httpResponse.addHeader("Content-Type", "application/json");
-        httpResponse.getWriter().print(tokenJsonResponse);
+        httpResponse.addHeader("Authorization", tokenJsonResponse);
 		
 	}
 
