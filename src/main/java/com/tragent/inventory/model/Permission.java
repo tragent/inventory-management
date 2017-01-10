@@ -25,6 +25,9 @@ public class Permission implements GrantedAuthority {
 	private String name;
 	private String description;
 	
+	@Column(nullable=false)
+	private boolean permissionEnable;
+	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "permission")
 	private List<Role> role;
 	
@@ -54,6 +57,14 @@ public class Permission implements GrantedAuthority {
 	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public boolean isPermissionEnable() {
+		return permissionEnable;
+	}
+
+	public void setPermissionEnable(boolean permissionEnable) {
+		this.permissionEnable = permissionEnable;
 	}
 
 	@Override

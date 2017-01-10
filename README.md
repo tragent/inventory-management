@@ -12,6 +12,7 @@ Generic Inventory Management for small and medium size businesses
 
 ## What works:
 
+* Authenticate user on login and logout
 * Create user
 * Retrieve a list of users in the system
 * Retrieve a users's details
@@ -33,12 +34,6 @@ Generic Inventory Management for small and medium size businesses
 * Update product's detail
 * Delete a product
 * Find a particular product
-
-## What doesn't:
-
-* Make purchase from a supplier
-* View sales receipts
-* Make sales to a customer
 * Create role
 * Retrieve a list of roles in the system
 * Retrieve a roles's details
@@ -48,6 +43,12 @@ Generic Inventory Management for small and medium size businesses
 * Retrieve a list of permissions in the system
 * Update permission
 * Retrieve a permissions's details
+
+## What doesn't:
+
+* Make purchase from a supplier
+* View sales receipts
+* Make sales to a customer
 
 ## IMPROVEMENTS:
 

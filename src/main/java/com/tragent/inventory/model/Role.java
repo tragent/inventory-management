@@ -29,6 +29,9 @@ public class Role implements GrantedAuthority {
 	private String name;
 	private String description;
 	
+	@Column(nullable=false)
+	private boolean roleEnable;
+	
 	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
 	private List<User> users;
 	
@@ -56,6 +59,14 @@ public class Role implements GrantedAuthority {
 
 	public String getDescription() {
 		return description;
+	}
+	
+	public boolean isRoleEnable() {
+		return roleEnable;
+	}
+
+	public void setRoleEnable(boolean roleEnable) {
+		this.roleEnable = roleEnable;
 	}
 
 	public List<User> getUsers() {

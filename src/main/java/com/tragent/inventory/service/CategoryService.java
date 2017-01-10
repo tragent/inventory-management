@@ -33,7 +33,7 @@ public interface CategoryService {
 	/**
 	 * Create new Category.
 	 * 
-	 * @param user the category to be created
+	 * @param category the category to be created
 	 * @return the created category 
 	 */
 	public Category create(Category category);
