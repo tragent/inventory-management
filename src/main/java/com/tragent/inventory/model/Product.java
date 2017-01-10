@@ -1,9 +1,15 @@
 package com.tragent.inventory.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +32,12 @@ public class Product {
 	
 	@Column(nullable=false)
 	private boolean isActive;
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	private List<Purchase> supplier;
+	
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
+	private List<Category> categories;
 	
 	public Long getId() {
 		return id;
@@ -54,6 +66,10 @@ public class Product {
 	public boolean isActive() {
 		return isActive;
 	}
+	/*
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}*/
 
 	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
