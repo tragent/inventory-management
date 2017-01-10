@@ -6,6 +6,7 @@ import com.tragent.inventory.model.Permission;
 import com.tragent.inventory.model.Role;
 
 public interface RoleService {
+	
 	/**
 	 * Get all roles in the system.
 	 * 
@@ -51,7 +52,7 @@ public interface RoleService {
 	 * @param roleId, permissionId
 	 * @return the updated collection of permission
 	 */
-	public Collection<Permission> updatePermission(int roleId, Long permissionId);
+	public Collection<Permission> addPermission(int roleId, Long permissionId);
 	
 	/**
 	 * Delete a role from the system.
@@ -59,4 +60,5 @@ public interface RoleService {
 	 * @param id role's id
 	 */
 	public void delete(int id);
+	
 }

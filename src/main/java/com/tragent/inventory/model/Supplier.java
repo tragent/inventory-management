@@ -1,9 +1,13 @@
 package com.tragent.inventory.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +32,9 @@ public class Supplier {
 	
 	@Column(nullable=false)
 	private boolean accountEnabled;
+	
+	@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
+	 private List<Purchase> products;
 	
 	public Supplier() {
 		super();

@@ -43,10 +43,11 @@ Generic Inventory Management for small and medium size businesses
 * Retrieve a list of permissions in the system
 * Update permission
 * Retrieve a permissions's details
+* Make purchase from a supplier
+* View purchase transactions
 
 ## What doesn't:
 
-* Make purchase from a supplier
 * View sales receipts
 * Make sales to a customer
 
