@@ -4,6 +4,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tragent.inventory.model.Customer;
 import com.tragent.inventory.model.Product;
 import com.tragent.inventory.repository.ProductRepository;
 import com.tragent.inventory.service.ProductService;

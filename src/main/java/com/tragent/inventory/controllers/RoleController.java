@@ -70,7 +70,7 @@ public class RoleController {
 	 * Get permissions belonging to role with id.
 	 * 
 	 * @param id role's id
-	 * @return the permissions belonging to role or 404 if id is not found
+	 * @return the permissions with given id or 404 if id is not found
 	 */
 	@RequestMapping(value="/{id}/permissions",
 			method=RequestMethod.GET, 
@@ -139,7 +139,7 @@ public class RoleController {
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Collection<Permission>> addPemissiontoRole(@PathVariable("roleId") int roleId, @PathVariable("permissionId") Long permissionId){
 		
-		Collection<Permission> permissions = roleService.addPermission(roleId, permissionId);
+		Collection<Permission> permissions = roleService.updatePermission(roleId, permissionId);
 		if (permissions == null) {
 			return new ResponseEntity<Collection<Permission>>(HttpStatus.NOT_FOUND);
 		}

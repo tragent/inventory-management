@@ -83,7 +83,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Collection<Permission> addPermission(int roleId, Long permissionId) {
+	public Collection<Permission> updatePermission(int roleId, Long permissionId) {
 		
 		Role role = roleRepository.findByid(roleId);
 		Permission newPermission = permissionService.findById(permissionId);

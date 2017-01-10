@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tragent.inventory.model.Category;
-import com.tragent.inventory.model.Product;
 import com.tragent.inventory.service.CategoryService;
 
 @RestController
@@ -65,25 +64,6 @@ public class CategoryController {
 		return new ResponseEntity<Category>(category, HttpStatus.OK);
 		
 	}
-	/**
-	 * Get products belonging to category with id.
-	 * 
-	 * @param id category's id
-	 * @return the products belong to category or 404 if id is not found
-	 */
-	@RequestMapping(value="/{id}/products",
-			method=RequestMethod.GET, 
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Product>> getProductsformCategory(@PathVariable("id") Long id){
-		
-		Category category = categoryService.findById(id);
-		if (category == null) {
-			return new ResponseEntity<Collection<Product>>(HttpStatus.NOT_FOUND);
-		}
-		
-		return new ResponseEntity<Collection<Product>>(category.getProducts(), HttpStatus.OK);
-		
-	}
 	
 	/**
 	 * Create new category
@@ -123,27 +103,6 @@ public class CategoryController {
 		}
 		
 		return new ResponseEntity<Category>(category, HttpStatus.OK);
-		
-	}
-	
-	/**
-	 * add product to category.
-	 * 
-	 * @param categoryId, productId category's id and product's id
-	 * @return the updated list of products belong to category
-	 */
-	@RequestMapping(value="/{categoryId}/products/{productId}",
-			method=RequestMethod.PUT,
-			consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Product>> addProductToCategory(@PathVariable("categoryId") Long categoryId, @PathVariable("productId") Long productId){
-		
-		Collection<Product> products = categoryService.addProduct(categoryId, productId);
-		if (products == null) {
-			return new ResponseEntity<Collection<Product>>(HttpStatus.NOT_FOUND);
-		}
-		
-		return new ResponseEntity<Collection<Product>>(products, HttpStatus.OK); 
 		
 	}
 	

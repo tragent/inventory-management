@@ -3,7 +3,6 @@ package com.tragent.inventory.service;
 import java.util.Collection;
 
 import com.tragent.inventory.model.Category;
-import com.tragent.inventory.model.Product;
 
 /* Service that provides CRUD operation for Categories  */
 public interface CategoryService {
@@ -48,18 +47,9 @@ public interface CategoryService {
 	public Category update(Category category);
 	
 	/**
-	 * Add new product to a category.
-	 * 
-	 * @param categoryId, productnId
-	 * @return the updated collection of products
-	 */
-	public Collection<Product> addProduct(Long categoryId, Long productId);
-	
-	/**
 	 * Delete a category from the system.
 	 * 
 	 * @param id category's id
 	 */
 	public void delete(Long id);
-	
 }
