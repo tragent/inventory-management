@@ -31,7 +31,7 @@ public class CategoryController {
 	 */
 	@RequestMapping(method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Category>> getUsers(@RequestParam(value = "name", required = false) String name){
+	public ResponseEntity<Collection<Category>> getCategories(@RequestParam(value = "name", required = false) String name){
 		
 		Collection<Category> categories = new ArrayList<Category>();
 		if (name != null) {
@@ -54,7 +54,7 @@ public class CategoryController {
 	@RequestMapping(value="/{id}",
 			method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Category> getUserById(@PathVariable("id") Long id){
+	public ResponseEntity<Category> getCategoryById(@PathVariable("id") Long id){
 		
 		Category category = categoryService.findById(id);
 		if (category == null) {
@@ -114,7 +114,7 @@ public class CategoryController {
 	 */
 	@RequestMapping(value="/{id}",
 			method=RequestMethod.DELETE)
-	public ResponseEntity<Category> deleteUser(@PathVariable("id") Long id){
+	public ResponseEntity<Category> deleteCategory(@PathVariable("id") Long id){
 		
 		categoryService.delete(id);
 		return new ResponseEntity<Category>(HttpStatus.NO_CONTENT);

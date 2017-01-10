@@ -31,7 +31,7 @@ public class SupplierController {
 	 */
 	@RequestMapping(method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Supplier>> getUsers(@RequestParam(value = "email", required = false) String email){
+	public ResponseEntity<Collection<Supplier>> getSuppliers(@RequestParam(value = "email", required = false) String email){
 		
 		Collection<Supplier> suppliers = new ArrayList<Supplier>();
 		if (email != null) {
@@ -54,7 +54,7 @@ public class SupplierController {
 	@RequestMapping(value="/{id}",
 			method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Supplier> getUserById(@PathVariable("id") Long id){
+	public ResponseEntity<Supplier> getSupplierById(@PathVariable("id") Long id){
 		
 		Supplier supplier = supplierService.findById(id);
 		if (supplier == null) {
@@ -95,7 +95,7 @@ public class SupplierController {
 			method=RequestMethod.PUT,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Supplier> updateUser(@RequestBody Supplier supplier){
+	public ResponseEntity<Supplier> updateSupplier(@RequestBody Supplier supplier){
 		
 		supplier = supplierService.update(supplier);
 		if (supplier == null) {
@@ -114,7 +114,7 @@ public class SupplierController {
 	 */
 	@RequestMapping(value="/{id}",
 			method=RequestMethod.DELETE)
-	public ResponseEntity<Supplier> deleteUser(@PathVariable("id") Long id){
+	public ResponseEntity<Supplier> deleteSupplier(@PathVariable("id") Long id){
 		
 		supplierService.delete(id);
 		return new ResponseEntity<Supplier>(HttpStatus.NO_CONTENT);
