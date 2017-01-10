@@ -27,6 +27,12 @@ Generic Inventory Management for small and medium size businesses
 * Retrieve a customers's details
 * Update customer's information
 * Delete a customer
+* Create a product
+* Retrieve a list of products in the system
+* Retrieve a product's details
+* Update product's detail
+* Delete a product
+* Find a particular product
 
 ## What doesn't:
 
