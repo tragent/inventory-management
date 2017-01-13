@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findById(Long id) {
-		
 		User user = userRepository.findOne(id);
 		return user;
 		
@@ -33,7 +32,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findByUsername(String username) {
-		
 		User user = userRepository.findByUsername(username);
 		return user;
 		
