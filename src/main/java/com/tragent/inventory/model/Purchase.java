@@ -36,11 +36,10 @@ public class Purchase {
 	private Date transactionDate = new Date( );
 	
 	public Purchase() {
-		super();
+
 	}
 
 	public Purchase(Product product, Supplier supplier, int quantity) {
-		super();
 		this.product = product;
 		this.supplier = supplier;
 		this.quantity = quantity;
@@ -77,5 +76,4 @@ public class Purchase {
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}	
-
 }

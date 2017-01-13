@@ -23,6 +23,7 @@ public class Product {
 	@Column(nullable=false)
 	private String name;
 	private String description;
+	private Double costPrice;
 	
 	@Column(nullable=false)
 	private Long quantity;
@@ -39,13 +40,12 @@ public class Product {
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
 	private List<Category> categories;
 	
+	@OneToMany(mappedBy="product",  cascade = CascadeType.ALL)
+	private List<Sale> customer;
+	
 	public Long getId() {
 		return id;
 	}
-	
-	/*public void setId(Long id) {
-		this.id = id;
-	}*/
 	
 	public String getName() {
 		return name;
@@ -66,10 +66,6 @@ public class Product {
 	public boolean isActive() {
 		return isActive;
 	}
-	/*
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}*/
 
 	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
@@ -89,6 +85,14 @@ public class Product {
 
 	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
+	}
+
+	public Double getCostPrice() {
+		return costPrice;
+	}
+
+	public void setCostPrice(Double costPrice) {
+		this.costPrice = costPrice;
 	}
 	
 }
