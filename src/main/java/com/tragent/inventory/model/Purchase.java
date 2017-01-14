@@ -18,6 +18,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "puchase")
 public class Purchase {
 	
+	@Id
+	private String id;
+	
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ServerRequest.class)
 	@ManyToOne(optional = false)
     @JoinColumn(name = "product_id")
@@ -29,20 +32,29 @@ public class Purchase {
 	private Supplier supplier;
 	
 	@Column(nullable=false)
-	private int quantity;
+	private Integer quantity;
 	
-	@Id
 	@Column(nullable=false)
 	private Date transactionDate = new Date( );
 	
+	@Column(nullable=false)
+	private String status;
+	
 	public Purchase() {
-
+		super();
 	}
 
-	public Purchase(Product product, Supplier supplier, int quantity) {
+	public Purchase(Product product, Supplier supplier, Integer quantity) {
+		super();
+		this.id = "TRN"+transactionDate.getTime();
 		this.product = product;
 		this.supplier = supplier;
 		this.quantity = quantity;
+		this.status = "Pending";
+	}
+	
+	public String getId() {
+		return this.id;
 	}
 
 	public Product getProduct() {
@@ -73,7 +85,12 @@ public class Purchase {
 		return transactionDate;
 	}
 
-	public void setTransactionDate(Date transactionDate) {
-		this.transactionDate = transactionDate;
-	}	
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 }

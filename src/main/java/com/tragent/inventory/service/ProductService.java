@@ -14,6 +14,13 @@ public interface ProductService {
 	public Collection<Product> findAll();
 	
 	/**
+	 * Get all active products in the system.
+	 * 
+	 * @return collection of all product in the system
+	 */
+	public Collection<Product> findByIsActive();
+	
+	/**
 	 * Find a product by Id.
 	 * 
 	 * @param id the product's id

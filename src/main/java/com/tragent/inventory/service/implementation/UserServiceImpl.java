@@ -18,13 +18,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Collection<User> findAll() {
 		
-		Collection<User> users = userRepository.findByAccountEnabled(true);
+		Collection<User> users = userRepository.findAll();
 		return users;
 		
 	}
 
 	@Override
 	public User findById(Long id) {
+		
 		User user = userRepository.findOne(id);
 		return user;
 		
@@ -32,6 +33,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findByUsername(String username) {
+		
 		User user = userRepository.findByUsername(username);
 		return user;
 		
@@ -81,6 +83,13 @@ public class UserServiceImpl implements UserService {
 		user.setAccountEnabled(false);
 		userRepository.save(user);
 	}
+
+	@Override
+	public Collection<User> findByaccountEnable(boolean accountEnable) {
+		
+		Collection<User> users = userRepository.findByAccountEnabled(accountEnable);
+		return users;
+		
+	}
 	
 }
-

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.tragent.inventory.model.Customer;
 import com.tragent.inventory.model.User;
 import com.tragent.inventory.service.CustomerService;
@@ -31,12 +33,16 @@ public class CustomerController {
 	@RequestMapping(
 			method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Customer>> getCustomers(){
+	public ResponseEntity<Collection<Customer>> getCustomers(@RequestParam(value = "enable", required = false) String enable){
 		
 		Collection<Customer> customers = new ArrayList<Customer>();
-		Collection<Customer> customer = customerService.findAll();
-		customers.addAll(customer);
-		
+		if(enable != null){
+			Collection<Customer> customer = customerService.findByIsActive();
+			customers.addAll(customer);
+		} else {
+			Collection<Customer> customer = customerService.findAll();
+			customers.addAll(customer);
+		}
 		return new ResponseEntity<Collection<Customer>>(customers, HttpStatus.OK);	
 	}
 	

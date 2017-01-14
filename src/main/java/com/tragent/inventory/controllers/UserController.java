@@ -30,9 +30,10 @@ public class UserController {
 	 * @param username/email
 	 * @return all users or users with a particular username or email in the system
 	 */
-	@RequestMapping(method=RequestMethod.GET, 
+	@RequestMapping(method=RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<User>> getUsers(@RequestParam(value = "username", required = false) String username, @RequestParam(value = "email", required = false) String email){
+	public ResponseEntity<Collection<User>> getUsers(@RequestParam(value = "username", required = false) String username, @RequestParam(value = "email", required = false) String email,
+		@RequestParam(value = "enable", required = false) String enable){
 		
 		Collection<User> users = new ArrayList<User>();
 		if (username != null) {
@@ -41,6 +42,10 @@ public class UserController {
 		} else if (email != null) {
 			User user = userService.findByEmail(email);
 			users.add(user);
+		} else if (enable != null) {
+			Collection<User> enableUser = userService.findAll();
+			enableUser = userService.findByaccountEnable(true);
+			users.addAll(enableUser);
 		} else {
 			Collection<User> allUser = userService.findAll();
 			users.addAll(allUser);

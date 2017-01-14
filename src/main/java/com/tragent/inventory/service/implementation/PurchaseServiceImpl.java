@@ -20,7 +20,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Autowired
 	private PurchaseRepository purchaseRepository;
 	
+	@Autowired
 	private SupplierService supplierService;
+	
+	@Autowired
 	private ProductService productService;
 
 	@Override
@@ -44,6 +47,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 		
 		Supplier supplier = supplierService.findById(supplierId);
 		Product product = productService.findById(productId);
+		if ( product.getQuantity() < quantity ) {
+			return null;
+		}
+		
+		long newProductQuantity = product.getQuantity() - quantity;
+		product.setQuantity(newProductQuantity);
 		Purchase purchase = new Purchase(product, supplier, quantity);
 		purchaseRepository.save(purchase);
 		return purchase;

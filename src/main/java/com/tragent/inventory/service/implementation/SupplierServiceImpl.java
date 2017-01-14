@@ -18,7 +18,7 @@ public class SupplierServiceImpl implements SupplierService{
 	@Override
 	public Collection<Supplier> findAll() {
 		
-		Collection<Supplier> suppliers = supplierRepository.findByAccountEnabled(true);
+		Collection<Supplier> suppliers = supplierRepository.findAll();
 		return suppliers;
 		
 	}
@@ -75,6 +75,14 @@ public class SupplierServiceImpl implements SupplierService{
 		
 		supplier.setAccountEnabled(false);
 		supplierRepository.save(supplier);
+	}
+
+	@Override
+	public Collection<Supplier> findByaccountEnabled() {
+		
+		Collection<Supplier> suppliers = supplierRepository.findByAccountEnabled(true);
+		return suppliers;
+		
 	}
 
 }

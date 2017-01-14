@@ -31,12 +31,16 @@ public class SupplierController {
 	 */
 	@RequestMapping(method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Supplier>> getSuppliers(@RequestParam(value = "email", required = false) String email){
+	public ResponseEntity<Collection<Supplier>> getSuppliers(@RequestParam(value = "email", required = false) String email,
+			@RequestParam(value = "enable", required = false) String enable){
 		
 		Collection<Supplier> suppliers = new ArrayList<Supplier>();
 		if (email != null) {
 			Supplier supplier = supplierService.findByEmail(email);
 			suppliers.add(supplier);
+		} else if (enable != null) {
+			Collection<Supplier> supplier = supplierService.findByaccountEnabled();
+			suppliers.addAll(supplier);
 		} else {
 			Collection<Supplier> allSuppliers = supplierService.findAll();
 			suppliers.addAll(allSuppliers);

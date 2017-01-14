@@ -31,12 +31,16 @@ public class ProductController {
 	 */
 	@RequestMapping(method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Product>> getProduct(@RequestParam(value = "name", required = false) String name){
+	public ResponseEntity<Collection<Product>> getProduct(@RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "enable", required = false) String enable ) {
 		
 		Collection<Product> products = new ArrayList<Product>();
 		if (name != null) {
 			Product product = productService.findByName(name);
 			products.add(product);
+		} else if (enable != null) {
+			Collection<Product> product = productService.findByIsActive();
+			products.addAll(product);
 		} else {
 			Collection<Product> allProducts = productService.findAll();
 			products.addAll(allProducts);
@@ -122,4 +126,3 @@ public class ProductController {
 	}
 
 }
-

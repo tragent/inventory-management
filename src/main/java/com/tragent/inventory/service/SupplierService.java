@@ -15,6 +15,13 @@ public interface SupplierService {
 	public Collection<Supplier> findAll();
 	
 	/**
+	 * Get all Suppliers with accounts enabled in the system.
+	 * 
+	 * @return collection of all Suppliers in the system
+	 */
+	public Collection<Supplier> findByaccountEnabled();
+	
+	/**
 	 * Find a supplier by Id.
 	 * 
 	 * @param id the id of the required supplier

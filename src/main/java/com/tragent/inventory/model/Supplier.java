@@ -19,7 +19,7 @@ public class Supplier {
 	Long id;
 
 	@Column(nullable=false)
-	private String firstName;
+	private String name;
 	
 	@Column(nullable=false)
 	private String lastName;
@@ -27,7 +27,7 @@ public class Supplier {
 	@Column(nullable=false)
 	private String email;
 	
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private String phoneNumber;
 	
 	@Column(nullable=false)
@@ -44,16 +44,12 @@ public class Supplier {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public String getame() {
+		return name;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String name) {
+		this.name = name;
 	}
 
 	public String getLastName() {

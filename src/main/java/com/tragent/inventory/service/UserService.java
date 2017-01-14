@@ -39,6 +39,14 @@ public interface UserService {
 	User findByEmail(String email);
 	
 	/**
+	 * Find a user by accountEnable.
+	 * 
+	 * @param accountEnable the accountEnable of the user to get
+	 * @return the user object if found else return null
+	 */
+	Collection<User> findByaccountEnable(boolean accountEnable);
+	
+	/**
 	 * Create new user.
 	 * 
 	 * @param user the user to be created
