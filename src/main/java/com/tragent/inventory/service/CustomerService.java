@@ -7,11 +7,18 @@ import com.tragent.inventory.model.Customer;
 public interface CustomerService {
 	
 	/**
-	 * Get all Suppliers in the system.
+	 * Get all customers in the system.
 	 * 
 	 * @return collection of all Suppliers in the system
 	 */
 	Collection<Customer> findAll();
+	
+	/**
+	 * Get all active customers in the system.
+	 * 
+	 * @return collection of all Suppliers in the system
+	 */
+	Collection<Customer> findByIsActive();
 	
 	/**
 	 * Find a customer by Id.

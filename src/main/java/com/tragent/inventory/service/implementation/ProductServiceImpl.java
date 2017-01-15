@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public Collection<Product> findAll() {
-		Collection<Product> product = productRepository.findByIsActive(true);
+		Collection<Product> product = productRepository.findAll();
 		return product;
 	}
 
@@ -69,6 +69,14 @@ public class ProductServiceImpl implements ProductService{
 			product.setIsActive(true);
 		}
 		productRepository.save(product);
+		
+	}
+
+	@Override
+	public Collection<Product> findByIsActive() {
+		
+		Collection<Product> product = productRepository.findByIsActive(true);
+		return product;
 		
 	}
 

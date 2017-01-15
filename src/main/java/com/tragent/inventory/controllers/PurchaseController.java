@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tragent.inventory.model.Purchase;
+import com.tragent.inventory.model.PurchaseHolder;
 import com.tragent.inventory.service.PurchaseService;
 
 @RestController
@@ -59,11 +60,11 @@ public class PurchaseController {
 	@RequestMapping(method=RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Purchase> createPurchaseTransaction(@RequestBody Long supplierId, Long productId, Integer quantity){
+	public ResponseEntity<Purchase> createPurchaseTransaction(@RequestBody PurchaseHolder purchaseHolder){
 		
-		Purchase transaction = purchaseService.create(supplierId, productId, quantity);
+		Purchase transaction = purchaseService.create(purchaseHolder.getSupplier(), purchaseHolder.getProduct(), purchaseHolder.getQuantity());
 		if (transaction == null) {
-			return new ResponseEntity<Purchase>(HttpStatus.FORBIDDEN);
+			return new ResponseEntity<Purchase>(HttpStatus.BAD_REQUEST);
 		}
 	
 		return new ResponseEntity<Purchase>(transaction, HttpStatus.OK);

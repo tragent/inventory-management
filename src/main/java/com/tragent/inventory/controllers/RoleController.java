@@ -52,12 +52,12 @@ public class RoleController {
 	 * @param id role's id
 	 * @return the role with given id or 404 if id is not found
 	 */
-	@RequestMapping(value="/{id}",
+	@RequestMapping(value="/{roleId}",
 			method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Role> getRoleById(@PathVariable("id") int id){
+	public ResponseEntity<Role> getRoleById(@PathVariable("roleId") int roleId){
 		
-		Role role = roleService.findById(id);
+		Role role = roleService.findById(roleId);
 		if (role == null) {
 			return new ResponseEntity<Role>(HttpStatus.NOT_FOUND);
 		}
@@ -72,12 +72,12 @@ public class RoleController {
 	 * @param id role's id
 	 * @return the permissions belonging to role or 404 if id is not found
 	 */
-	@RequestMapping(value="/{id}/permissions",
+	@RequestMapping(value="/{roleId}/permissions",
 			method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Permission>> getPemissionsformRole(@PathVariable("id") int id){
+	public ResponseEntity<Collection<Permission>> getPemissionsformRole(@PathVariable("roleId") int roleId){
 		
-		Role role = roleService.findById(id);
+		Role role = roleService.findById(roleId);
 		if (role == null) {
 			return new ResponseEntity<Collection<Permission>>(HttpStatus.NOT_FOUND);
 		}
@@ -112,7 +112,7 @@ public class RoleController {
 	 * @param id, role's id
 	 * @return the updated role's information.
 	 */
-	@RequestMapping(value="/{id}",
+	@RequestMapping(value="/{roleId}",
 			method=RequestMethod.PUT,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
@@ -154,7 +154,7 @@ public class RoleController {
 	 * @param id, category's id
 	 * @return 204, .
 	 */
-	@RequestMapping(value="/{id}",
+	@RequestMapping(value="/{roleId}",
 			method=RequestMethod.DELETE)
 	public ResponseEntity<Role> deleteRole(@PathVariable("id") int id){
 		

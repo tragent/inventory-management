@@ -51,12 +51,12 @@ public class CategoryController {
 	 * @param id category's id
 	 * @return the category with given id or 404 if id is not found
 	 */
-	@RequestMapping(value="/{id}",
+	@RequestMapping(value="/{categoryId}",
 			method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Category> getCategoryById(@PathVariable("id") Long id){
+	public ResponseEntity<Category> getCategoryById(@PathVariable("categoryId") Long categoryId){
 		
-		Category category = categoryService.findById(id);
+		Category category = categoryService.findById(categoryId);
 		if (category == null) {
 			return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
 		}
@@ -70,12 +70,12 @@ public class CategoryController {
 	 * @param id category's id
 	 * @return the products belong to category or 404 if id is not found
 	 */
-	@RequestMapping(value="/{id}/products",
+	@RequestMapping(value="/{categoryId}/products",
 			method=RequestMethod.GET, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Product>> getProductsformCategory(@PathVariable("id") Long id){
+	public ResponseEntity<Collection<Product>> getProductsformCategory(@PathVariable("categoryId") Long categoryId){
 		
-		Category category = categoryService.findById(id);
+		Category category = categoryService.findById(categoryId);
 		if (category == null) {
 			return new ResponseEntity<Collection<Product>>(HttpStatus.NOT_FOUND);
 		}
@@ -110,7 +110,7 @@ public class CategoryController {
 	 * @param id, category's id
 	 * @return the updated category's information.
 	 */
-	@RequestMapping(value="/{id}",
+	@RequestMapping(value="/{categoryId}",
 			method=RequestMethod.PUT,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
@@ -152,11 +152,11 @@ public class CategoryController {
 	 * @param id, category's id
 	 * @return 204, .
 	 */
-	@RequestMapping(value="/{id}",
+	@RequestMapping(value="/{categoryId}",
 			method=RequestMethod.DELETE)
-	public ResponseEntity<Category> deleteCategory(@PathVariable("id") Long id){
+	public ResponseEntity<Category> deleteCategory(@PathVariable("categoryId") Long categoryId){
 		
-		categoryService.delete(id);
+		categoryService.delete(categoryId);
 		return new ResponseEntity<Category>(HttpStatus.NO_CONTENT);
 		
 	}

@@ -17,7 +17,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public Collection<Customer> findAll() {
-		Collection<Customer> customers = customerRepository.findByIsActive(true);
+		Collection<Customer> customers = customerRepository.findAll();
 		return customers;
 	}
 
@@ -69,6 +69,12 @@ public class CustomerServiceImpl implements CustomerService{
 		}
 		customerRepository.save(customer);
 		
+	}
+
+	@Override
+	public Collection<Customer> findByIsActive() {
+		Collection<Customer> customers = customerRepository.findByIsActive(true);
+		return customers;
 	}
 
 	

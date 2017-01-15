@@ -1,22 +1,16 @@
 package com.tragent.inventory.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.omg.CORBA.ServerRequest;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -37,11 +31,13 @@ public class User {
 	private String username;
 	
 	@Column(nullable=false)
-	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 	
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private String email;
+	
+	@Column(nullable=false)
+	private String phoneNumber;
 	
 	@Column(nullable=false)
 	private boolean accountEnabled;
@@ -50,25 +46,17 @@ public class User {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "role_id")
 	private Role role;
-	
-	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=ServerRequest.class)
-	@OneToMany( mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Sale> sales;
 		
-	public List<Sale> getSales() {
-		return sales;
-	}
-
-	public void setSales(List<Sale> sales) {
-		this.sales = sales;
-	}
-
 	public User(){
 			
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
