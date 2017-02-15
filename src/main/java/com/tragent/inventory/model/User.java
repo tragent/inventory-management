@@ -35,10 +35,7 @@ public class User {
 	
 	@Column(nullable=true)
 	private String email;
-	
-	@Column(nullable=false)
-	private String phoneNumber;
-	
+		
 	@Column(nullable=false)
 	private boolean accountEnabled;
 	

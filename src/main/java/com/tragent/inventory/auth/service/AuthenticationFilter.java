@@ -20,8 +20,6 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import org.springframework.web.filter.GenericFilterBean;
 import org.springframework.web.util.UrlPathHelper;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public class AuthenticationFilter extends GenericFilterBean {
 	
     public static final String TOKEN_SESSION_KEY = "token";
@@ -39,7 +37,7 @@ public class AuthenticationFilter extends GenericFilterBean {
 				
 		HttpServletRequest httpRequest = asHttp(request);
         HttpServletResponse httpResponse = asHttp(response);
-        
+             
         String username = httpRequest.getParameter("username");
         String password = httpRequest.getParameter("password");
         String token = httpRequest.getHeader("Authorization");   
@@ -89,10 +87,10 @@ public class AuthenticationFilter extends GenericFilterBean {
 		Authentication resultOfAuthentication = tryToAuthenticateWithUsernameAndPassword(username, password);
 		SecurityContextHolder.getContext().setAuthentication(resultOfAuthentication);
         httpResponse.setStatus(HttpServletResponse.SC_OK);
-        TokenResponse tokenResponse = new TokenResponse(resultOfAuthentication.getDetails().toString());
-        String tokenJsonResponse = new ObjectMapper().writeValueAsString(tokenResponse);
+        String tokenResponse = resultOfAuthentication.getDetails().toString();
+        //String tokenJsonResponse = new ObjectMapper().writeValueAsString(tokenResponse); 
         httpResponse.addHeader("Content-Type", "application/json");
-        httpResponse.addHeader("Authorization", tokenJsonResponse);
+        httpResponse.addHeader("Authorization", tokenResponse);
 		
 	}
 
