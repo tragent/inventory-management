@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -42,6 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		auth.authenticationProvider(customAuthenticationProvider()).
 	    authenticationProvider(tokenAuthenticationProvider());
 	}
+	
+	/* To allow Pre-flight [OPTIONS] request from browser */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+    }
 	
 	@Bean
     public TokenService tokenService() {

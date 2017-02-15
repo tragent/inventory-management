@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
 			//Cannot update user that doesn't exist or user without email
 			return null;
 		}
-				
+		user.setAccountEnabled(true);	
 		userRepository.save(user);
 		return user;
 	}
